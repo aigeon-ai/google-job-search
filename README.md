@@ -1,43 +1,43 @@
-```markdown
 # Aigeon AI Google Job Search
 
-Aigeon AI Google Job Search is a Python-based server application designed to facilitate job search operations using Google's job search capabilities. This application leverages the SerpApi to perform searches and retrieve job listings based on various parameters such as location, language, and more.
+## Project Description
+
+Aigeon AI Google Job Search is a Python-based server application designed to facilitate the scraping of job listings from Google Jobs using the SerpApi service. This application provides a robust interface for querying job data with various customizable parameters, allowing users to tailor their search results according to specific needs such as location, language, and more.
 
 ## Features Overview
 
-This project offers a comprehensive tool for scraping Google Jobs search results. It is built on top of the FastMCP framework, providing a robust and efficient server environment. The application is designed to handle multiple parameters to refine and customize job search queries, making it a versatile tool for job seekers and developers alike.
+- **Customizable Job Search**: The application allows users to perform job searches with a variety of parameters, making it flexible for different search requirements.
+- **Integration with SerpApi**: Utilizes the SerpApi service to fetch Google Jobs data, ensuring reliable and up-to-date results.
+- **Environment Configuration**: Uses environment variables for sensitive data management, enhancing security.
+- **Asynchronous and Cached Searches**: Supports both synchronous and asynchronous search requests, as well as cached results to optimize performance and reduce API usage.
 
 ## Main Features and Functionality
 
-- **Google Jobs Search Integration**: Utilizes the SerpApi to perform searches on Google Jobs, allowing users to retrieve job listings based on specific criteria.
-- **Customizable Search Parameters**: Supports a wide range of search parameters including query, location, language, domain, and more, enabling precise and targeted job searches.
-- **Pagination Support**: Includes functionality to handle pagination, allowing users to retrieve multiple pages of search results.
-- **Cache Management**: Offers options to manage caching behavior, either utilizing cached results for efficiency or forcing fresh searches for up-to-date information.
-- **Asynchronous Search Capability**: Provides an option to perform asynchronous searches, enabling users to submit queries and retrieve results at a later time.
+1. **Search Job Functionality**: The core feature of the application is its ability to perform job searches on Google Jobs through the SerpApi. Users can customize their search queries with a wide range of parameters.
+2. **Parameter Customization**: The application supports numerous parameters such as location, language, search radius, and more, allowing for highly specific job searches.
+3. **Response Handling**: The application processes the API response and returns the job search results in JSON format, making it easy to integrate with other systems or applications.
+4. **Server Execution**: The application runs as a server using the FastMCP framework, listening for incoming requests and processing them accordingly.
 
 ## Main Functions Description
 
 ### `search_job`
 
-The `search_job` function is the core component of this application, responsible for executing job search queries. It accepts several parameters to customize the search:
+This function is the primary tool for executing a job search query on Google Jobs using the SerpApi. It accepts several parameters to customize the search:
 
-- **q**: The query string defining the job search criteria.
-- **location**: Specifies the geographical location for the search. If omitted, the search may default to the proxy's location.
-- **uule**: An encoded location parameter for more precise location-based searches.
-- **google_domain**: Defines the Google domain to use for the search, defaulting to google.com.
-- **gl**: Specifies the country code for the search, allowing for country-specific results.
-- **hl**: Sets the language for the search results.
-- **next_page_token**: Used for pagination to retrieve subsequent pages of results.
-- **lrad**: Defines the search radius in kilometers.
-- **uds**: Enables additional filtering of search results based on Google's filters.
-- **no_cache**: Determines whether to use cached results or force a fresh search.
-- **aasync**: Controls whether the search is performed synchronously or asynchronously.
+- **q**: (str) The search query string for the job search.
+- **location**: (Union[str, None]) Specifies the location from which the search should originate. If omitted, the search may default to the proxy's location.
+- **uule**: (Union[str, None]) Google encoded location for the search. Cannot be used with the `location` parameter.
+- **google_domain**: (Union[str, None]) The Google domain to use for the search, defaulting to google.com.
+- **gl**: (Union[str, None]) Country code for the search, e.g., 'us' for the United States.
+- **hl**: (Union[str, None]) Language code for the search, e.g., 'en' for English.
+- **next_page_token**: (Union[int, None]) Token for retrieving the next page of results.
+- **lrad**: (Union[float, None]) Search radius in kilometers.
+- **uds**: (Union[str, None]) Filter string provided by Google for search refinement.
+- **no_cache**: (Union[bool, None]) Determines whether to force a fresh search or allow cached results.
+- **aasync**: (Union[bool, None]) Determines whether the search is submitted asynchronously.
 
-The function constructs a payload with the provided parameters, sends a GET request to the SerpApi, and returns the JSON response containing the job listings.
+The function constructs a payload with the provided parameters, sends a GET request to the SerpApi, and returns the JSON response containing the job search results.
 
-### Server Execution
+---
 
-The server is configured to run using the FastMCP framework, listening on a specified port (defaulting to 9997 if not provided). The server operates using standard input/output for communication, making it suitable for integration into various environments.
-
-This application is ideal for developers and job seekers looking to automate and enhance their job search processes using Google's powerful search capabilities.
-```
+This README provides a comprehensive overview of the Aigeon AI Google Job Search application, detailing its features, functionality, and how to utilize its main functions effectively.
